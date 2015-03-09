@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" version="3.0">
+  <servlet>
+    <servlet-name>counter</servlet-name>
+    <servlet-class>servlet.episode3.Counter</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>counter</servlet-name>
+    <url-pattern>/counter</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>HolisticCounter</servlet-name>
+    <servlet-class>servlet.episode3.HolisticCounter</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>HolisticCounter</servlet-name>
+    <url-pattern>/HolisticCounter</url-pattern>
+  </servlet-mapping>
+  <context-param>
+    <param-name>driver</param-name>
+    <param-value>com.mysql.jdbc.Driver</param-value>
+  </context-param>
+  <context-param>
+    <param-name>url</param-name>
+    <param-value>jdbc:mysql://localhost/test</param-value>
+  </context-param>
+  <context-param>
+    <param-name>user</param-name>
+    <param-value>root</param-value>
+  </context-param>
+  <context-param>
+    <param-name>passwd</param-name>
+    <param-value></param-value>
+  </context-param>
+  <servlet>
+    <servlet-name>config</servlet-name>
+    <jsp-file>/configDemo.jsp</jsp-file>
+    <init-param>
+      <param-name>driver</param-name>
+      <param-value>com.mysql.jdbc.Driver</param-value>
+    </init-param>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>AsynServlet</servlet-name>
+    <servlet-class>com.servlet.AsynServlet</servlet-class>
+    <async-supported>true</async-supported>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>Upload</servlet-name>
+    <servlet-class>com.servlet.Upload</servlet-class>
+  </servlet>
+
+
+  <servlet-mapping>
+    <servlet-name>config</servlet-name>
+    <url-pattern>/config</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>AsynServlet</servlet-name>
+    <url-pattern>/servlet/AsynServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>Upload</servlet-name>
+    <url-pattern>/upload</url-pattern>
+  </servlet-mapping>
+  <filter>
+    <filter-name>characterFilter</filter-name>
+    <filter-class>com.filter.CharacterFilter</filter-class>
+    <async-supported>true</async-supported>
+    <init-param>
+      <param-name>encoding</param-name>
+      <param-value>UTF-8</param-value>
+    </init-param>
+  </filter>
+  <filter-mapping>
+    <filter-name>characterFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+  <listener>
+    <listener-class>com.listener.AccessCountListener</listener-class>
+  </listener>
+  <listener>
+    <listener-class>com.listener.MyContextAttributeListener</listener-class>
+  </listener>
+  <listener>
+    <listener-class>com.listener.MyServletReqestListener</listener-class>
+  </listener>
+  
+  <absolute-ordering>
+  	<name>module1</name>
+  	<name>module2</name>
+  </absolute-ordering>
+</web-app>
